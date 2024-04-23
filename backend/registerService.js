@@ -39,7 +39,7 @@ module.exports = function(connection) {
 
 async function getuseridcon(connection) {
     return new Promise((resolve, reject) => {
-        connection.query('SELECT MAX(userid) AS max_userid FROM userAccount', (err, results) => {
+        connection.query('SELECT MAX(userid) AS max_userid FROM useraccount', (err, results) => {
             if (err) {
                 console.error('Error retrieving maximum userid:', err);
                 reject(err);

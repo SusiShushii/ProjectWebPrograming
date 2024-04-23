@@ -45,5 +45,6 @@ module.exports = function(connection) {
             res.status(500).json({ error: 'Internal server error' });
         }
     });
+
     return router;
 };
