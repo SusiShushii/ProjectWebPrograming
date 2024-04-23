@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>User Landing Page</title>
+      <link rel="stylesheet" href="../css/login for admin.css">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+
+        <div class="nav-group nav-group-left">
+          <a class="nav-button" href="../html/home.html">Home</a>
+          <a class="nav-button" href="../html/new arrival.html">New Arrival</a>
+          <a class="nav-button" href="../html/search.html">Search</a>
+        </div>
+      
+        <div class="nav-icon"></div>
+      
+        <div class="nav-group nav-group-right">
+          <a class="nav-button" href="login page.html">Login/Signup</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="login-wrapper">
+      <h2>Sign in / Login<br>for Admin</h2>
+      <form class="login-form" onsubmit="submitForm(event)">
+        <div class="input-group">
+          <label for="username">Username: </label>
+          <input type="text" id="email" name="email" placeholder="Email or username" required>
+        </div>
+        <div class="input-group">
+          <label for="password">Password: </label>
+          <input type="password" id="password" name="password" placeholder="Password" required>
+        </div>
+          <button type="submit" class="login-btn">Login</button>
+        </form>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () =>{
+        const token = localStorage.getItem('token')
+        fetch('http://localhost:8112/authen',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+token,
+            },
+        })
+        .then(response=>response.json())
+        .then(data=>{
+            if(data.status=='ok'){
+              window.location='./product management.html'
+            }
+            else{
+            }
+        })
+        .catch((error)=>{
+            console.error('Error: ',error);
+        })
+    },);
+      function submitForm(event) {
+          event.preventDefault(); // Prevent the default form submission
+          
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+
+          fetchLoginData(email, password);
+      }
+
+      async function fetchLoginData(email, password) {
+          const jsonData = {
+              email: email,
+              password: password
+          };
+
+          try {
+              const response = await fetch('http://localhost:8112/admin-login', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(jsonData),
+              });
+
+              const data = await response.json();
+              console.log('Success', data);
+              if(data.status=='ok'){
+                localStorage.setItem('token',data.token);
+                window.location= './product management.html'
+                alert('success')
+              }
+              else{
+                alert('Login failed')
+              }
+              // Handle success or redirect to next page
+          } catch (error) {
+              console.error('Error', error);
+          }
+      }
+  </script>  
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <p>© 2024 Pop Mart. All Rights Reserved.</p>
+        <p>Follow us on social media or contact us via email.</p>
+        
+        <!-- 添加一个链接按钮到团队页面 -->
+        <a href="team.html" class="footer-button">Meet Our Team</a>
+      </div>
+    </footer>
+  </body>
+</html>

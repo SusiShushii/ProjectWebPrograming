@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+}
+
+header {
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    text-align: center;
+    margin-top: 65px;
+}
+
+  /* 固定在顶部的导航栏样式 */
+  .navbar {
+    background: #000000; /* 导航栏背景颜色 */
+    display: flex;
+    align-items: center;
+    padding: 0.5em 1em;
+    position: fixed; /* 固定位置 */
+    top: 0; /* 顶部对齐 */
+    left: 0; /* 左边对齐 */
+    width: 100%; /* 宽度设置为100% */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* 阴影效果 */
+    z-index: 1000; /* 确保导航栏在其他内容的上方 */
+    justify-content: flex-start; /* 重置为初始排列，以便在媒体查询中调整 */
+  }
+
+  /* 导航组样式 */
+  .nav-group {
+    display: flex;
+    justify-content: flex-start;
+    flex-grow: 1;
+  }
+
+  .nav-group-right {
+    justify-content: flex-end; /* 对于右侧按钮组 */
+  }
+  
+  /* 导航栏中间图标样式 */
+.nav-icon {
+  background-image: url('../picture/popmart_logo.png');
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 300px;
+  height: 50px;
+  display: block;
+  /* 没有 flex-grow 或 flex-shrink，因为我们不想要它伸缩 */
+}
+
+  /* 导航按钮的基本样式 */
+  .nav-button {
+    text-decoration: none;
+    color: #ffffff; /* 字体颜色 */
+    font-size: 1em;
+    background: #0d3f56; /* 按钮背景颜色 */
+    padding: 0.5em 1em;
+    margin: 0 0.5em;
+    border-radius: 20px; /* 圆角边框 */
+    font-weight: bold;
+    transition: background-color 0.3s; /* 背景色过渡效果 */
+  }
+  
+  /* 当鼠标悬停在按钮上时的样式 */
+  .nav-button:hover {
+    background: #a3acb9; /* 鼠标悬停时的按钮背景颜色 */
+  }
+  
+  /* 当前激活的按钮样式 */
+  .nav-button.active {
+    border: 2px solid #6a9fb5; /* 激活状态的边框颜色 */
+  }
+  
+  /* 登录按钮样式 */
+  .nav-button[href="login page.html"] {
+    margin-left: auto; /* 将按钮推到右侧 */
+  }
+
+section {
+    margin: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color o.3s ease;
+}
+
+button[onclick*="Product("] {
+    margin-top: 5px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+button:hover {
+    opacity: 0.8;
+}

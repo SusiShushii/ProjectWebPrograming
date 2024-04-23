@@ -1,0 +1,252 @@
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+/* 主体布局 */
+body {
+  display: flex;
+  flex-direction: column; /* 垂直排列子元素 */
+  min-height: 100vh;
+  justify-content: center; /* 垂直居中 */
+  align-items: center; /* 水平居中 */
+  font-family: 'Arial', sans-serif; /* 选择你的字体 */
+  background-image: url('../picture/login page.png'); 
+  background-size: cover; /* 背景图片覆盖整个可视区域 */
+  background-position: center; /* 图片居中显示 */
+  background-repeat: no-repeat; /* 图片不重复 */
+  background-attachment: fixed; /* 背景图片固定，内容滚动时背景不动 */
+}
+
+  /* 固定在顶部的导航栏样式 */
+.navbar {
+  background: #000000; /* 导航栏背景颜色 */
+  display: flex;
+  align-items: center;
+  padding: 0.5em 1em;
+  position: fixed; /* 固定位置 */
+  top: 0; /* 顶部对齐 */
+  left: 0; /* 左边对齐 */
+  width: 100%; /* 宽度设置为100% */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* 阴影效果 */
+  z-index: 1000; /* 确保导航栏在其他内容的上方 */
+  justify-content: flex-start; /* 重置为初始排列，以便在媒体查询中调整 */
+}
+
+  /* 导航组样式 */
+  .nav-group {
+    display: flex;
+    justify-content: flex-start;
+    flex-grow: 1;
+  }
+
+  .nav-group-right {
+    justify-content: flex-end; /* 对于右侧按钮组 */
+  }
+  
+  /* 导航栏中间图标样式 */
+.nav-icon {
+  background-image: url('../picture/popmart_logo.png');
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 300px;
+  height: 50px;
+  display: block;
+  /* 没有 flex-grow 或 flex-shrink，因为我们不想要它伸缩 */
+}
+
+/* 导航按钮的基本样式 */
+.nav-button {
+  text-decoration: none;
+  color: #ffffff; /* 字体颜色 */
+  font-size: 1em;
+  background: #0d3f56; /* 按钮背景颜色 */
+  padding: 0.5em 1em;
+  margin: 0 0.5em;
+  border-radius: 20px; /* 圆角边框 */
+  font-weight: bold;
+  transition: background-color 0.3s; /* 背景色过渡效果 */
+}
+
+/* 当鼠标悬停在按钮上时的样式 */
+.nav-button:hover {
+  background: #a3acb9; /* 鼠标悬停时的按钮背景颜色 */
+}
+
+/* 当前激活的按钮样式 */
+.nav-button.active {
+  border: 2px solid #6a9fb5; /* 激活状态的边框颜色 */
+}
+
+/* 登录按钮样式 */
+.nav-button[href="login page.html"] {
+  margin-left: auto; /* 将按钮推到右侧 */
+}
+
+/* 欢迎信息 */
+.welcome-text {
+  margin-top: 290px;
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 20px; 
+}
+
+/* 登录按钮容器 */
+.login-container {
+  display: flex;
+  justify-content: center; /* 使按钮水平居中 */
+  gap: 20px; /* 按钮之间的间距 */
+  flex-wrap: wrap; /* 允许内容换行 */
+}
+
+/* 登录按钮 */
+.login-button {
+  display: inline-block;
+  padding: 10px 40px;
+  color: #000000;
+  background: #f2efef; /* 按钮的背景颜色 */
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* 悬停时背景颜色变化的过渡效果 */
+  text-align: center;
+  text-decoration: none;
+}
+
+.login-button:hover {
+  background-color: #cccccc; /* 按钮悬停时的背景色 */
+}
+
+.login-via{
+display: inline-block; /* 或者'block' */
+margin: 0 10px; /* 在文本两侧添加外边距 */
+margin-top: 10px;
+font-size: 1em; /* 字体大小 */
+line-height: 40px; /* 调整这个值使文本垂直居中，应与图标高度一致 */
+color: #000000; /* 文本颜色 */
+}
+
+/* 社交登录图标容器样式 */
+.icon-login {
+  display: flex;
+  justify-content: center; /* 中心对齐图标 */
+  gap: 20px; /* 图标之间的间隔 */
+  margin-top: 10px;
+}
+
+/* 图标样式 */
+.icon {
+  width: 25px; /* 图标宽度 */
+  height: 25px; /* 图标高度 */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%; /* 将图标设为圆形 */
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* 特定图标的样式 */
+.icon-google {
+  background-image: url('../picture/google_logo.webp'); /* 替换为Google图标的路径 */
+}
+
+.icon-apple {
+  background-image: url('../picture/apple_logo.webp'); /* 替换为Apple图标的路径 */
+  background-size: 215%;
+}
+
+.site-footer {
+  margin-top: auto;
+  width: 100%;
+  background-color: #333; /* 深色背景、 */
+  color: #fff; /* 白色文字 */
+  text-align: center; /* 文字居中 */
+  padding: 20px; /* 内边距 */
+  font-size: 0.9rem; /* 字体大小，可以根据需要调整 */
+}
+
+.footer-button {
+  display: inline-block; /* 行内块元素，以适应内边距和边距 */
+  margin-top: 10px; /* 顶部边距 */
+  padding: 10px 20px; /* 内边距 */
+  background-color: #008cba; /* 按钮背景颜色，可以根据设计需求修改 */
+  color: #fff; /* 按钮文字颜色 */
+  text-decoration: none; /* 去除下划线 */
+  border-radius: 5px; /* 圆角边框 */
+  transition: background-color 0.3s; /* 鼠标悬停时的背景颜色过渡 */
+}
+
+.footer-button:hover {
+  background-color: #005f73; /* 鼠标悬停时的背景颜色变化 */
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .navbar{
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .nav-group {
+    flex-direction: row; /* 在小屏幕上以列布局显示 */
+    width: 100%;
+    align-items: center; /* 居中对齐 */
+    margin: 10px 0;
+  }
+  
+  .nav-group-left {
+    align-items: center;
+  }
+
+  .nav-button{
+      width: auto;
+      padding: auto;
+      align-items: flex-start;
+      flex: 1;
+      margin: auto;
+      text-align: center;
+  }
+
+  .nav-icon{
+    order: -1;
+    width: 60%;
+    height: auto;
+    background-size: 50%;
+    margin-bottom: 15px;
+  }
+
+  .nav-button[href="#login"]{
+      flex: 0;
+      margin-left: auto;
+      margin-right: auto;
+      order: 2;
+  }
+  
+  .login-container{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      flex-direction: column; /* 改为竖向排列 */
+      gap: 10px;
+      width: auto;
+  }
+
+  .login-button{
+      flex-direction: column;
+      width: auto;
+  }
+  
+  .welcome-text {
+    font-size: 2em;
+  }
+
+  .login-button {
+    padding: 10px 20px;
+  }
+
+}
+  

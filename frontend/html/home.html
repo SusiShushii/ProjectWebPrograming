@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home Page</title>
+        <link rel="stylesheet" href="../css/home.css">
+    </head>
+    
+    <body>
+      <header>
+        <nav class="navbar">
+  
+            <div class="nav-group nav-group-left">
+              <a class="nav-button" href="../html/home.html">Home</a>
+              <a class="nav-button" href="../html/new arrival.html">New Arrival</a>
+              <a class="nav-button" href="../html/search.html">Search</a>
+            </div>
+          
+            <div class="nav-icon"></div>
+          
+            <div class="nav-group nav-group-right">
+              <a class="nav-button" href="login page.html">Login/Signup</a>
+            </div>
+          </nav>
+        </header>
+
+          <div class="promo-banner">
+            <!-- 横幅的图片和购买按钮 -->
+            <img class="banner-img" src="../picture/1713319688764.png" alt="Promotional Banner">
+            <div class="banner-content">
+                <a class="view-details" href="detail.html?productId=5">VIEW DETAILS</a>
+                <a class="buy-now-btn" href="#">BUY NOW</a>
+            </div>
+          </div>
+          <script>
+          fetch(`http://localhost:8112/get`) // 根据实际路径修改
+            .then(response => response.json()) // 解析JSON数据
+            .then(products => {
+              console.log(products)
+              const productContainer = document.querySelector('.product-container');
+              productContainer.innerHTML = ''; // 清空现有的产品内容
+            
+              // 限制显示前四个产品
+              const displayedProducts = products.slice(0, 4);
+            
+              // 为每个产品创建HTML并添加到容器中
+              displayedProducts.forEach(product => {
+                productContainer.innerHTML += `
+                  <div class="product">
+                    <a href="detail.html?productId=${product.productid}">
+                      <img src="${product.image}" alt="${product.pname}">
+                      <p>${product.pname}</p>
+                    </a>
+                    <p><span class="product-price">${product.price}</span></p>
+                  </div>
+                `;
+              });
+            })
+            .catch(error => {
+              console.error('Fetching products failed:', error);
+            });
+            </script>
+
+            
+          <h2>Recommendation</h2>
+           <div class="product-container">
+             <!-- 每个产品项包含图片和描述 -->
+          </div> 
+          
+          <footer class="site-footer">
+            <div class="footer-content">
+              <p>© 2024 Pop Mart. All Rights Reserved.</p>
+              <p>Follow us on social media or contact us via email.</p>
+              
+              <!-- 添加一个链接按钮到团队页面 -->
+              <a href="team.html" class="footer-button">Meet Our Team</a>
+            </div>
+          </footer>
+    </body>
+</html>

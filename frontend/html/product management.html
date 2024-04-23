@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management</title>
+    <link rel="stylesheet" href="../css/product management.css">
+</head>
+<script>
+    
+    document.addEventListener('DOMContentLoaded', () =>{
+        const token = localStorage.getItem('token')
+        fetch('http://localhost:8112/authen',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+token,
+            },
+        })
+        .then(response=>response.json())
+        .then(data=>{
+            if(data.status=='ok'){
+
+            }
+            else{
+                window.location= './home.html'
+            }
+        })
+        .catch((error)=>{
+            console.error('Error: ',error);
+        })
+    },);
+</script>
+<body>
+    <header>
+        <h1>Product Management</h1>
+        <nav class="navbar">
+  
+            <div class="nav-group nav-group-left">
+              <a class="nav-button" href="../html/home.html">Home</a>
+              <a class="nav-button" href="../html/new arrival.html">New Arrival</a>
+              <a class="nav-button" href="../html/search.html">Search</a>
+            </div>
+          
+            <div class="nav-icon"></div>
+          
+            <div class="nav-group nav-group-right">
+              <a class="nav-button" href="../html/login page.html">Login/Signup</a>
+            </div>
+          </nav>
+    </header>
+
+    <section id="add-product">
+        <h2>Add New Product</h2>
+        <form id="addForm" onsubmit="submitForm(event)">
+            <input type="text" id="pname" name="pname" placeholder="Product Name" required>
+            <input type="text" id="brand" name="brand" placeholder="Brand" required>
+            <input type="text" id="size" name="size" placeholder="Product Size" required>
+            <input type="text" id="material" name="material" placeholder="Material" required>
+            <input type="text" id="price" name="price" placeholder="Price" required>
+            <input type="text" id="image" name="image" placeholder="Path of image" required>
+            <input type="number" id="isnew" name="isnew" placeholder="New item?">
+            <button type="submit">Add Product</button>
+        </form>
+    </section>
+    <script>
+        function submitForm(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            const pname = document.getElementById('pname').value;
+            const brand = document.getElementById('brand').value;
+            const size = document.getElementById('size').value;
+            const material = document.getElementById('brand').value;
+            const price = document.getElementById('price').value;
+            const image = document.getElementById('image').value;
+            var isnew = document.getElementById('isnew').value;
+            var checknew;
+            if(isnew == 1){
+                checknew = true
+            }
+            else{
+                checknew = false
+            }
+            fetchInsertData(pname, brand, size,material,price,image,checknew);
+        }
+
+        async function fetchInsertData(pname, brand, size,material,price,image,isnew) {
+            const jsonData = {
+                image: image,
+                pname: pname,
+                price: price,
+                brand: brand,
+                size: size,
+                material: material,
+                isnew: isnew
+            };
+
+            try {
+                const response = await fetch('http://localhost:8112/insert', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(jsonData),
+                    });
+
+                const data = await response.json();
+                console.log('Success', data);
+                if(data.status=='ok'){
+                    location.reload()
+                  alert('success')
+                }
+                else{
+                  alert('failed')
+                }
+                // Handle success or redirect to next page
+            } catch (error) {
+                console.error('Error', error);
+            }
+        }
+    </script>
+    <section id="search-products">
+        <h2>Search Products</h2>
+        <form id="searchForm">
+            <input type="text" id="searchId" name="productId" placeholder="Product ID">
+            <input type="text" id="searchName" name="productName" placeholder="Product Name">
+            <input type="text" id="searchSize" name="productSize" placeholder="Product Size">
+            <input type="text" id="searchMaterial" name="productMaterial" placeholder="Product Material">
+            <input type="number" id="searchPrice" name="productPrice" placeholder="Price">
+            <button type="submit">Search</button>
+        </form>
+    </section>
+    
+    <section id="product-list">
+        <h2>Manage Products</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Size</th>
+                    <th>Material</th>
+                    <th>Price</th>
+                    <th>isNew</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Product items will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProducts(); // 确保调用此函数来加载假设的数据
+            document.getElementById('searchForm').addEventListener('submit', handleSearch);
+        });
+
+        function loadProducts() {
+            // 假设的JSON数据
+            getProducts()
+            .then(products => {
+                const tableBody = document.querySelector('#product-list tbody');
+                tableBody.innerHTML = ''; // Clear existing product rows
+                products.forEach(product => {
+                    tableBody.appendChild(createProductRow(product));
+                });
+        })
+        .catch(error => console.error('Failed to load products:', error));
+        }
+
+        function getProducts() {
+        return fetch('http://localhost:8112/get')
+            .then(response => response.json())
+            .catch(error => {
+                throw new Error('Failed to fetch products:', error);
+        });
+}
+        function searchProducts(event) {
+            event.preventDefault();
+            const query = document.getElementById('searchQuery').value.toLowerCase();
+            const tableBody = document.querySelector('#product-list tbody');
+            tableBody.innerHTML = ''; // 清空现有的搜索结果
+
+        // 函数 getProducts() 返回所有产品的列表
+        }
+
+        function getProducts() {
+            return fetch('http://localhost:8112/get') // 假设您的产品数据来自于此API
+                .then(response => response.json())
+                .catch(error => console.error('Failed to fetch products:', error));
+        }
+
+        function createProductRow(product) {
+            const row = document.createElement('tr');
+            row.setAttribute('data-id', product.id);
+            row.innerHTML = `
+                <td><img src="${product.image}" alt="${product.pname}" style="width:100px; height:auto;"></td>
+                <td>${product.pname}</td>
+                <td>${product.brand}</td>
+                <td>${product.size}</td>
+                <td>${product.material}</td>
+                <td>${product.price}</td>
+                <td>${product.isnew ? 'True' : 'False'}</td>
+                <td>
+                    <button onclick="editProduct(${product.productid})">Edit</button>
+                    <button onclick="deleteProduct(${product.productid})">Delete</button>
+                </td>
+            `;
+            return row;
+        }
+
+        async function deleteProduct(productid) {
+            const jsonData={
+                productid: productid
+            }
+            try{
+
+            const response = await fetch(`http://localhost:8112/delete`, { 
+                method: 'DELETE',
+                headers: {
+                        'Content-Type': 'application/json',
+                        }, 
+                body: JSON.stringify(jsonData),
+                })
+                const data = await response.json();
+                console.log('Success',data);
+                if(data.status=='ok'){
+                    location.reload()
+                    alert('Delted successfully')
+                }
+                else{
+                    alert('error')
+                }
+            }catch(error){
+                console.error('Error',error)
+            }
+        }
+
+        function updateProduct(id, productData) {
+            fetch(`http://localhost:8112/api/products/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(productData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Product updated:', data);
+                    // 更新前端显示等操作
+                })
+                .catch(error => console.error('Error updating product:', error));
+        }
+
+        </script>
+    </body>
+        
+</html>

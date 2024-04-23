@@ -1,0 +1,277 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* 固定在顶部的导航栏样式 */
+.navbar {
+    background: #000000; /* 导航栏背景颜色 */
+    display: flex;
+    align-items: center;
+    padding: 0.5em 1em;
+    position: fixed; /* 固定位置 */
+    top: 0; /* 顶部对齐 */
+    left: 0; /* 左边对齐 */
+    width: 100%; /* 宽度设置为100% */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* 阴影效果*/
+    z-index: 1000; /* 确保导航栏在其他内容的上方 */
+    justify-content: flex-start; /* 重置为初始排列，以便在媒体查询中调整 */
+  }
+
+  /* 导航组样式 */
+  .nav-group {
+    display: flex;
+    justify-content: flex-start;
+    flex-grow: 1;
+  }
+
+  .nav-group-right {
+    justify-content: flex-end; /* 对于右侧按钮组 */
+  }
+  
+  /* 导航栏中间图标样式 */
+.nav-icon {
+  background-image: url('../picture/popmart_logo.png');
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 300px;
+  height: 50px;
+  display: block;
+  /* 没有 flex-grow 或 flex-shrink，因为我们不想要它伸缩 */
+}
+
+  /* 导航按钮的基本样式 */
+  .nav-button {
+    text-decoration: none;
+    color: #ffffff; /* 字体颜色 */
+    font-size: 1em;
+    background: #0d3f56; /* 按钮背景颜色 */
+    padding: 0.5em 1em;
+    margin: 0 0.5em;
+    border-radius: 20px; /* 圆角边框 */
+    font-weight: bold;
+    transition: background-color 0.3s; /* 背景色过渡效果 */
+  }
+  
+  /* 当鼠标悬停在按钮上时的样式 */
+  .nav-button:hover {
+    background: #a3acb9; /* 鼠标悬停时的按钮背景颜色 */
+  }
+  
+  /* 当前激活的按钮样式 */
+  .nav-button.active {
+    border: 2px solid #6a9fb5; /* 激活状态的边框颜色 */
+  }
+  
+  /* 登录按钮样式 */
+  .nav-button[href="login page.html"] {
+    margin-left: auto; /* 将按钮推到右侧 */
+  }
+
+    /* 主体布局 */
+    body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column; /* 垂直排列子元素 */
+        justify-content: center; /* 垂直居中 */
+        align-items: center; /* 水平居中 */
+        font-family: 'Arial', sans-serif; /* 字体 */
+        background-color: #ffffff;
+    }
+
+    h2{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .login-wrapper{
+        margin-top: 100px;
+        margin-bottom: 50px;
+    }
+
+      .input-group {
+        display: flex;
+        text-align: left;
+        margin-bottom: 15px;
+      }
+      
+      .input-group label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        margin-top: 10px;
+        justify-content: center;
+        margin-right: 20px;
+      }
+      
+      .input-group input {
+        width: calc(100% - 20px); /* 调整宽度 */
+        padding: 10px;
+        margin-bottom: 5px; /* 调整间距 */
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    align-items: center;
+
+}
+
+      /* 登录按钮的基础样式 */
+.login-btn {
+    padding: 10px 20px; /* 增加内边距使按钮更大 */
+    color: rgb(0, 0, 0); /* 字体颜色 */
+    background-color: transparent; /* 背景颜色 */
+    border: 2px solid #000000; /* 边框 */
+    border-radius: 5px; /* 圆角边框 */
+    cursor: pointer; /* 鼠标悬停时显示指针 */
+    font-weight: bold; /* 加粗字体 */
+    font-size: 1em; /* 字体大小 */
+    transition: background-color 0.3s ease; /* 颜色过渡效果 */
+    margin-bottom: 10px;
+  }
+  
+  /* 注册按钮的基础样式 */
+  .signup-btn {
+    padding: 10px 20px; /* 增加内边距使按钮更大 */
+    color: #000000; /* 字体颜色 */
+    background-color: transparent; /* 透明背景 */
+    border: 2px solid #000000; /* 边框 */
+    border-radius: 5px; /* 圆角边框 */
+    cursor: pointer; /* 鼠标悬停时显示指针 */
+    font-weight: bold; /* 加粗字体 */
+    font-size: 1em; /* 字体大小 */
+    transition: background-color 0.3s ease; /* 颜色过渡效果 */
+
+  }
+  
+  /* 按钮在鼠标悬停时的样式 */
+  .login-btn:hover{
+    color: #ffffff;
+    background-color: #000000; /* 鼠标悬停时的背景颜色 */
+  }
+
+  .signup-btn:hover{
+    color: #ffffff;
+    background-color: #d80303;
+  }
+  
+ 
+  .login-btn:focus,
+  .signup-btn:focus {
+    outline: none; /* 移除焦点时的轮廓线 */
+  }
+
+  .login-via{
+    display: flex; 
+    margin: 0 10px; /* 在文本两侧添加外边距 */
+    margin-top: 10px;
+    font-size: 1em; /* 根据需要调整字体大小 */
+    line-height: 40px; /* 调整这个值使文本垂直居中，应与图标高度一致 */
+    color: #000000; /* 文本颜色 */
+    justify-content: center;
+  }
+  
+      
+  /* 社交登录图标容器样式 */
+  .icon-login {
+      display: flex;
+      justify-content: center; /* 中心对齐图标 */
+      align-items: center;
+      gap: 20px; /* 图标之间的间隔 */
+      margin-top: 10px;
+  }
+
+  /* 图标样式 */
+  .icon {
+    width: 25px; /* 图标宽度 */
+    height: 25px; /* 图标高度 */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%; /* 将图标设为圆形 */
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+  /* 特定图标的样式 */
+  .icon-google {
+    background-image: url('../picture/google_logo.webp'); /* 替换为Google图标的路径 */
+  }
+  
+  .icon-apple {
+    background-image: url('../picture/apple_logo.webp'); /* 替换为Apple图标的路径 */
+    background-size: 215%;
+  }
+
+  .site-footer {
+    margin-top: auto;
+    width: 100%;
+    background-color: #333; /* 深色背景 */
+    color: #fff; /* 白色文字 */
+    text-align: center; /* 文字居中 */
+    padding: 20px; /* 内边距 */
+    font-size: 0.9rem; /* 字体大小*/
+  }
+  
+  .footer-button {
+    display: inline-block; /* 行内块元素，以适应内边距和边距 */
+    margin-top: 10px; /* 顶部边距 */
+    padding: 10px 20px; /* 内边距 */
+    background-color: #008cba; /* 按钮背景颜色，可以根据设计需求修改 */
+    color: #fff; /* 按钮文字颜色 */
+    text-decoration: none; /* 去除下划线 */
+    border-radius: 5px; /* 圆角边框 */
+    transition: background-color 0.3s; /* 鼠标悬停时的背景颜色过渡 */
+  }
+
+  .footer-button:hover {
+    background-color: #005f73; /* 鼠标悬停时的背景颜色变化 */
+  }
+
+      @media (max-width: 768px) {
+        .navbar {
+          flex-direction: column;
+          align-items: center;
+      }
+  
+      .nav-group {
+          flex-direction: column;
+          width: auto;
+          text-align: center;
+          align-items: center;
+      }
+      
+      .nav-group-left,
+      .nav-group-right {
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 1em; /* 给整个按钮组添加下边距 */
+      }
+  
+      .nav-button {
+          width: 100%; /* 让按钮宽度充满其容器 */
+          margin: 0.5em 0; /* 为每个按钮添加垂直间隙 */
+          padding: 0.5em 1em; /* 如果需要，调整内边距大小 */
+      }
+  
+      .nav-icon {
+          width: 60%; /* 根据需求调整图标大小 */
+          margin-bottom: 1em; /* 给图标和下面的按钮组之间添加空间 */
+          order: -1;
+      }
+  
+      .nav-button[href="login page.html"] {
+          margin-top: -0.5em; /* 给登录/注册按钮添加上边距 */
+      }
+
+        h2{
+            margin-top: 240px;
+        }
+      }

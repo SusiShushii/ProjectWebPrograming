@@ -1,0 +1,112 @@
+[
+    {
+      "id": "1",
+      "image": "../picture/20240315_163746_207298__1200x1200.png",
+      "name": "DIMOO Animal Kingdom Series Figures",
+      "price": "$ 8",
+      "Brand": "Brand:POP MART",
+      "Size": "Size:Height about 6-8cm",
+      "Material": "Material:PVC/ABS",
+      "isNew": false
+    },
+    
+    {
+      "id": "2",
+      "image": "../picture/20240304_164111_296715__1200x1200.png",
+      "name": "CRYBABY × Powerpuff Girls Series Figures",
+      "price": "$ 8",
+      "Brand": "Brand:POP MART",
+      "Size": "Size:Height about 6-9cm",
+      "Material": "Material:PVC/ABS",
+      "isNew": false
+    },
+
+    {
+      "id": "3",
+      "image": "../picture/20240209_225419_585138__1200x1200.png",
+      "name": "SKULLPANDA Image Of Reality Series Figures",
+      "price": "$ 8",
+      "Brand": "Brand:POP MART",
+      "Size": "Size:Height about 5-8cm",
+      "Material": "Material:PVC/ABS/POM/Magnet",
+      "isNew": false
+    },
+
+    {
+      "id": "4",
+      "image": "../picture/20231228_175155_872547__1200x1200.png",
+      "name": "HIRONO Reshape Series Figures",
+      "price": "$ 8",
+      "Brand": "Brand:POP MART",
+      "Size": "Size:Height about 8.6-10.3cm",
+      "Material": "Material:PVC/ABS",
+      "isNew": false
+    },
+
+    {
+      "id": "5",
+      "image": "../picture/20240415_142654_441053__1200x1200.png",
+      "name": "inosoul's Lucid Dreams Series Figures",
+      "price": "$ 8",
+      "Brand": "Brand:POP MART",
+      "Size": "Size:Height about 6-9cm",
+      "Material": "Material:PVC/ABS/Hardware",
+      "isNew": true
+    },
+
+    {
+      "id": "6",
+      "image": "../picture/20240415_150050_195841__1200x1200.png",
+      "name": "JACKSON WANG MAGIC MAN SERIES FIGURES",
+      "price": "$ 8",
+      "Brand": "Brand:POP MART",
+      "Size": "Size:Height about 9.4cm-10cm",
+      "Material": "Material:PVC/ABS",
+      "isNew": true
+    },
+
+    {
+      "id": "7",
+      "image": "../picture/20240416_113802_168745__1200x1200.png",
+      "name": "Hirono Reshape Figurine",
+      "price": "$ 8",
+      "Brand": "Brand:POP MART",
+      "Size": "Size:Height about 22cm",
+      "Material": "Material:PVC/ABS",
+      "isNew": true
+    },
+
+    {
+      "id": "8",
+      "image": "../picture/20240416_113418_588683__1200x1200.png",
+      "name": "Hirono Simper Figure",
+      "price": "$ 28.43",
+      "Brand": "Brand:POP MART",
+      "Size": "Size:Height about 8cm",
+      "Material": "Material:PVC/ABS",
+      "isNew": true
+    },
+
+    {
+      "id": "9",
+      "image": "../picture/20240415_100913_251584__1200x1200.png",
+      "name": "MEGA SPACE MOLLY 1000% BEAMS",
+      "price": "$ 867.25",
+      "Brand": "Brand:POP MART",
+      "Size": "Size:Height about 70cm",
+      "Material": "Material:PVC/ABS/PC",
+      "isNew": true
+    },
+
+    {
+      "id": "10",
+      "image": "../picture/20231130_100936_193888__1200x1200.jpg",
+      "name": "SKULLPANDA The Ink Plum Blossom Series Figures",
+      "price": "$ 9.95",
+      "Brand": "Brand:POP MART",
+      "Size": "Size:Height about 8cm",
+      "Material": "Material:PVC/ABS/PC",
+      "isNew": true
+    }
+  ]
+  

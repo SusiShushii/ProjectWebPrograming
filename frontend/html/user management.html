@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <link rel="stylesheet" href="../css/user management.css"> <!-- 确保CSS路径正确 -->
+</head>
+<body>
+    <header>
+        <h1>User Management</h1>
+        <nav class="navbar">
+  
+            <div class="nav-group nav-group-left">
+              <a class="nav-button" href="../html/home.html">Home</a>
+              <a class="nav-button" href="../html/new arrival.html">New Arrival</a>
+              <a class="nav-button" href="../html/search.html">Search</a>
+            </div>
+          
+            <div class="nav-icon"></div>
+          
+            <div class="nav-group nav-group-right">
+              <a class="nav-button" href="../html/login page.html">Login/Signup</a>
+            </div>
+          </nav>
+    </header>
+
+    <section id="add-user">
+        <h2>Add New User</h2>
+        <form id="addUserForm">
+            <input type="text" id="userId" name="userId" placeholder="User ID" required>
+            <input type="text" id="userName" name="userName" placeholder="User Name" required>
+            <input type="number" id="userAge" name="userAge" placeholder="Age" required>
+            <input type="email" id="userEmail" name="userEmail" placeholder="Email" required>
+            <button type="submit">Add User</button>
+        </form>
+    </section>
+
+    <section id="search-users">
+        <h2>Search Users</h2>
+        <form id="searchForm">
+            <input type="text" id="searchId" name="userId" placeholder="User ID">
+            <input type="text" id="searchName" name="userName" placeholder="User Name">
+            <input type="number" id="searchAge" name="userAge" placeholder="Age">
+            <input type="email" id="searchEmail" name="userEmail" placeholder="Email">
+            <button type="submit">Search</button>
+        </form>
+    </section>
+    
+    <section id="user-list">
+        <h2>Manage Users</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- User items will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadUser(); // 加载假设数据
+            document.getElementById('searchForm').addEventListener('submit', searchUser); // 确保使用正确的处理函数
+        });
+    
+        function loadUser() {
+            const users = [
+                {
+                    "id": "1",
+                    "image": "../picture/Billy.jpeg",
+                    "name": "Billy",
+                    "age": "24",
+                    "email": "laogouri@zazhong.com"
+                },
+                // 更多用户信息...
+            ];
+    
+            const tableBody = document.querySelector('#user-list tbody');
+            users.forEach(user => {
+                tableBody.appendChild(createUserRow(user));
+            });
+        }
+    
+        function createUserRow(user) {
+            const row = document.createElement('tr');
+            row.setAttribute('data-id', user.id);
+            row.innerHTML = `
+                <td><img src="${user.image}" alt="${user.name}" style="width:100px; height:auto;"></td>
+                <td>${user.id}</td>
+                <td>${user.name}</td>
+                <td>${user.age}</td>
+                <td>${user.email}</td>
+                <td>
+                    <button onclick="editUser(${user.id})">Edit</button>
+                    <button onclick="deleteUser(${user.id})">Delete</button>
+                </td>
+            `;
+            return row;
+        }
+    
+        function searchUser(event) {
+            event.preventDefault();
+            const query = document.getElementById('searchId').value.toLowerCase(); // 确保使用正确的查询输入字段
+            const tableBody = document.querySelector('#user-list tbody');
+            tableBody.innerHTML = ''; // 清空现有的搜索结果
+    
+            getUsers().then(users => {
+                users.filter(user => {
+                    return user.id.toString().toLowerCase().includes(query) ||
+                        user.name.toLowerCase().includes(query) ||
+                        user.age.toString().includes(query) || // 确保年龄比较时将其转换为字符串
+                        user.email.toLowerCase().includes(query);
+                }).forEach(user => {
+                    tableBody.appendChild(createUserRow(user));
+                });
+            });
+        }
+    
+        function getUsers() {
+            return fetch('http://localhost:8112/api/users')
+                .then(response => response.json())
+                .catch(error => console.error('Failed to fetch users:', error));
+        }
+    </script>
+    
+</body>
+</html>

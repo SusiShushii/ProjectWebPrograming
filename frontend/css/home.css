@@ -1,0 +1,274 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center; /* 将所有文本居中 */
+    background-color: #f5f5f5; /* 背景颜色 */
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+  /* 固定在顶部的导航栏样式 */
+.navbar {
+    background: #000000; /* 导航栏背景颜色 */
+    display: flex;
+    align-items: center;
+    padding: 0.5em 1em;
+    position: fixed; /* 固定位置 */
+    top: 0; /* 顶部对齐 */
+    left: 0; /* 左边对齐 */
+    width: 100%; /* 宽度设置为100% */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* 阴影效果*/
+    z-index: 1000; /* 确保导航栏在其他内容的上方 */
+    justify-content: flex-start; /* 重置为初始排列，以便在媒体查询中调整 */
+  }
+
+  /* 导航组样式 */
+  .nav-group {
+    display: flex;
+    justify-content: flex-start;
+    flex-grow: 1;
+  }
+
+  .nav-group-right {
+    justify-content: flex-end; /* 对于右侧按钮组 */
+  }
+  
+  /* 导航栏中间图标样式 */
+.nav-icon {
+  background-image: url('../picture/popmart_logo.png');
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 300px;
+  height: 50px;
+  display: block;
+  /* 没有 flex-grow 或 flex-shrink，因为我们不想要它伸缩 */
+}
+
+  /* 导航按钮的基本样式 */
+  .nav-button {
+    text-decoration: none;
+    color: #ffffff; /* 字体颜色 */
+    font-size: 1em;
+    background: #0d3f56; /* 按钮背景颜色 */
+    padding: 0.5em 1em;
+    margin: 0 0.5em;
+    border-radius: 20px; /* 圆角边框 */
+    font-weight: bold;
+    transition: background-color 0.3s; /* 背景色过渡效果 */
+  }
+  
+  /* 当鼠标悬停在按钮上时的样式 */
+  .nav-button:hover {
+    background: #a3acb9; /* 鼠标悬停时的按钮背景颜色 */
+  }
+  
+  /* 当前激活的按钮样式 */
+  .nav-button.active {
+    border: 2px solid #6a9fb5; /* 激活状态的边框颜色 */
+  }
+  
+  /* 登录按钮样式 */
+  .nav-button[href="login page.html"] {
+    margin-left: auto; /* 将按钮推到右侧 */
+  }
+
+/* 确保整个横幅（包括图片和内容）响应式地占据整个屏幕宽度 */
+.promo-banner {
+  position: relative;
+  width: 100%;
+  max-width: 850px; /* 横幅的最大宽度 */
+  margin: auto; /* 这会确保横幅在大屏幕上居中 */
+}
+
+/* 使图片响应式并且宽度始终为100% */
+.banner-img {
+  width: 100%;
+  height: auto; /* 保持图片的宽高比 */
+  display: block; /* 避免图片下方有额外的空间 */
+}
+
+/* 使用绝对定位让内容相对于其父元素（即横幅）定位 */
+.banner-content {
+  position: absolute;
+  width: 90%; /* 根据需要可调整宽度，这里假设内容宽度为横幅宽度的90% */
+}
+
+/* 将按钮定位于横幅内部的具体位置 */
+.view-details,
+.buy-now-btn {
+  position: absolute;
+  /* 你可以使用百分比来定义按钮的具体位置 */
+  width: 110px;
+  padding: 17px 5px;
+  background-color: #d9534f; /* 按钮颜色 */
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none; /* 去掉下划线 */
+  font-weight: bold;
+  cursor: pointer; /* 鼠标悬停时显示指针 */
+  transform: translateY(-160%);
+}
+
+/* 具体按钮样式 */
+.view-details {
+  width: 160px;
+  height: auto;
+  left: 6.3%; /* 距离左侧的距离 */
+  transform: translateY(-275%);
+}
+
+.buy-now-btn {
+  left: 10%;
+  transform: translateY(-150%);
+}
+  
+  .view-details:hover,
+  .buy-now-btn:hover {
+    background-color: #c9302c; /* 鼠标悬停时按钮颜色 */
+  }
+  
+
+  .product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  
+  /* 单个产品样式 */
+  .product {
+    background: #fff;
+    width: 450px;
+    margin: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    /* 结果项内文本居中 */
+  }
+  
+  .product img {
+    width: 100%;
+    /* 图片宽度为容器宽度 */
+    max-width: 400px;
+    /* 最大宽度限制 */
+    height: auto;
+    margin: 0 auto;
+    /* 图片居中 */
+  }
+
+  .product-price{
+    color: #c9302c;
+    font-weight: bold;
+  }
+  
+  /* 推荐标题样式 */
+  h2 {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  .site-footer {
+    background-color: #333; /* 深色背景 */
+    color: #fff; /* 白色文字 */
+    text-align: center; /* 文字居中 */
+    padding: 20px; /* 内边距 */
+    font-size: 0.9rem; /* 字体大小 */
+  }
+  
+  .footer-button {
+    display: inline-block; /* 行内块元素，以适应内边距和边距 */
+    margin-top: 10px; /* 顶部边距 */
+    padding: 10px 20px; /* 内边距 */
+    background-color: #008cba; /* 按钮背景颜色 */
+    color: #fff; /* 按钮文字颜色 */
+    text-decoration: none; /* 去除下划线 */
+    border-radius: 5px; /* 圆角边框 */
+    transition: background-color 0.3s; /* 鼠标悬停时的背景颜色过渡 */
+  }
+  
+  .footer-button:hover {
+    background-color: #005f73; /* 鼠标悬停时的背景颜色变化 */
+  }
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-group {
+        flex-direction: column;
+        width: auto;
+        text-align: center;
+    }
+    
+    .nav-group-left,
+    .nav-group-right {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1em; /* 给整个按钮组添加下边距 */
+    }
+
+    .nav-button {
+        width: 100%; /* 让按钮宽度充满其容器 */
+        margin: 0.5em 0; /* 为每个按钮添加垂直间隙 */
+        padding: 0.5em 1em; /* 调整内边距大小 */
+    }
+
+    .nav-icon {
+        width: 60%; /* 调整图标大小 */
+        margin-bottom: 1em; /* 给图标和下面的按钮组之间添加空间 */
+        order: -1;
+    }
+
+    .nav-button[href="login page.html"] {
+        margin-top: -0.5em; /* 给登录/注册按钮添加上边距 */
+    }
+
+
+    .contact-info h3 {
+        flex-direction: column;
+        flex-basis: auto; /* 在宽屏幕上 h3 大小根据内容调整 */
+    }
+
+    .promo-banner{
+        margin-top: 300px;
+    }
+
+    /* 调整小屏幕上的按钮位置和大小 */
+  .view-details,
+  .buy-now-btn {
+    /* 可能需要减小按钮尺寸 */
+    position: absolute;
+    padding: 8px 16px;
+    width: 100px;
+    /* 可能需要调整位置 */
+    bottom: auto;
+    left: -45%; 
+    transform: translateY(300%);
+    font-size: 0.8em; /* 减小字体大小 */
+  }
+
+  .view-details{
+    width: 130px;
+    height: 43px;
+    transform: translateY(45%);
+  }
+
+  .banner-content {
+    /* 在小屏幕上调整位置和大小 */
+    top: 50%;
+    left: 50%;
+    width: 100%; /* 使内容填充整个宽度 */
+  }
+}
